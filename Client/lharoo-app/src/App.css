@@ -1,0 +1,68 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+body,
+p{
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+}
+
+.App{
+    background-image: url(./images/background-vectorl.svg);
+    position: relative;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.reg-parent{
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+}
+.registration{
+    position:relative;
+    display: grid;
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    align-content: center;
+    align-self: auto;
+    justify-content: space-evenly;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    grid-auto-rows: 200px;
+    grid-template-areas:
+      ". a a ."
+      ". a a .";
+  }
+  .element {
+    grid-area: a;
+    align-self: center;
+    justify-self: center;
+  }
+.div-element{ 
+    position: relative;
+    display: grid;
+    align-content: center;
+    justify-self: center;
+}
+.element-child{
+    align-content: center;
+    justify-self: center;
+}
+footer p{
+    align-items: center;
+    text-align:center;
+    padding-bottom: 0px;
+}
