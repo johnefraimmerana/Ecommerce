@@ -1,21 +1,18 @@
 import React from "react";
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { Card, CardContent, Typography, CardMedia, IconButton, CardFooter } from "@material-ui/core";
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+
 const makeStyles = {
   root: {
-    minWidth: 400,
-    height: 400,
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
+    maxWidth: 200,
   },
   title: {
     fontSize: 14,
   },
-  pos: {
-    marginBottom: 12,
-  },
+  media : {
+    height: '100px',
+    width: '100px',
+  }
 };
 
 function ProductCard() {
@@ -33,18 +30,16 @@ function ProductCard() {
           >
             game title
           </Typography>
-          <Typography variant="h5" component="h2">
-            be{bull}nev{bull}o{bull}lent
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography variant="body2" component="p">s
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
-          </Typography>
+          <CardMedia
+            title="product"
+          >
+            <img src="https://picsum.photos/200"></img>
+          </CardMedia>
         </CardContent>
+        <IconButton aria-label="add-cart">
+          <AddShoppingCartIcon color="secondary"></AddShoppingCartIcon>
+        </IconButton>
+        <Typography text="secondary">₱500</Typography>
       </Card>
     </>
   );

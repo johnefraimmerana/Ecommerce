@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import Schema from "mongoose";
-/*import Users from "./routes/users.js";*/
 import users from "./models/users.js";
 import dotenv from "dotenv";
 dotenv.config();
@@ -34,7 +33,7 @@ users.find(function (err, users) {
     console.log(users);
 
     users.forEach(function (user) {
-      console.log(user.username);
+      console.log(user.password);
     });
   }
 });

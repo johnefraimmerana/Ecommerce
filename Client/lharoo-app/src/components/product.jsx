@@ -9,39 +9,14 @@ function Product() {
     <>
       <Navigation />
       <ProductNavBar />
-      <Box my={2}>
-        <Grid container spacing={2} justify={"center"}>
-          <Grid container xs={2} item py="2">
+        <Grid container>
+          <Grid container item direction="row" justify="space-evenly" alignItems="center">
             <ProductCard />
-          </Grid>
-          <Grid container xs={2} item py="2">
             <ProductCard />
-          </Grid>
-          <Grid container xs={2} item py="2">
             <ProductCard />
-          </Grid>
-          <Grid container xs={2} item py="2">
             <ProductCard />
           </Grid>
         </Grid>
-      </Box>
-      <Box my={2}>
-        <Grid container spacing={2} justify={"center"}>
-          <Grid container xs={2} item py="2">
-            <ProductCard />
-          </Grid>
-          <Grid container xs={2} item py="2">
-            <ProductCard />
-          </Grid>
-          <Grid container xs={2} item py="2">
-            <ProductCard />
-          </Grid>
-          <Grid container xs={2} item py="2">
-            <ProductCard />
-          </Grid>
-        </Grid>
-      </Box>
-      <Footer />
     </>
   );
 }

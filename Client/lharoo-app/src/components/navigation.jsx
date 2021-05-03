@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Image from "../images/brand-vector.svg";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import Login from "../login/loginModal";
-import { IconButton, Tooltip } from "@material-ui/core";
+import { IconButton,  Button}  from "@material-ui/core";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 
 //variables of classes
@@ -56,14 +55,12 @@ function Navigation() {
               </Link>
             </li>
             <li>
-              <Tooltip>
-                <IconButton aria-label="cart">
+                <IconButton>
                   <ShoppingCartOutlinedIcon color="secondary" />
                 </IconButton>
-              </Tooltip>
             </li>
           </ul>
-          <Button className="btn btn-sm btn-success" onClick={openModal}>
+          <Button variant="contained" size="small" onClick={openModal}>
             Login
           </Button>
           <Login
