@@ -39,7 +39,7 @@ export default function SignUp() {
 
   return (
     <>
-    <Container component="main" maxWidth="xs" style={{ backgroundColor: '#ffffff', height: 'auto',borderRadius: '20px' }}>
+    <Container component="main" maxWidth="xs" style={{ height: 'auto',borderRadius: '20px' }}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

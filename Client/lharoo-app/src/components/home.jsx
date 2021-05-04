@@ -4,23 +4,28 @@ import Registration from "./registration";
 import Footer from "./footer";
 import Grid from '@material-ui/core/Grid';
 import Element from './element';
-import Box from '@material-ui/core/Box';
 
 function Home() {
   return (
-    <>
+    <div >
       <Navigation />
+      <div>
       <Grid container justify="space-evenly"  direction="row" spacing={10}>  
-        <Grid item >
-          <Element/>
+        <Grid item  justify="center" alignItems="center" direction="column">
+        <div className="home-item">
+          <h1>Lharo</h1>
+          <p>We offer games that suit you!</p>
+        </div>
         </Grid>
         <Grid item>
           <Registration />
         </Grid>
       </Grid>
+      </div>
+        <div >
         <Footer />
-      
-    </>
+        </div>
+    </div>
   );
 }
 export default Home;

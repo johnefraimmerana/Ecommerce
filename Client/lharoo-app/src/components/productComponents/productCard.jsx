@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, Typography, CardMedia, IconButton, CardFooter } from "@material-ui/core";
+import { Card, CardContent, Typography, CardMedia, IconButton, Grid } from "@material-ui/core";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const makeStyles = {
@@ -36,10 +36,14 @@ function ProductCard() {
             <img src="https://picsum.photos/200"></img>
           </CardMedia>
         </CardContent>
-        <IconButton aria-label="add-cart">
+        <Grid container>
+          <Grid item>
+          <IconButton aria-label="add-cart">
           <AddShoppingCartIcon color="secondary"></AddShoppingCartIcon>
         </IconButton>
         <Typography text="secondary">₱500</Typography>
+          </Grid>
+        </Grid>
       </Card>
     </>
   );
