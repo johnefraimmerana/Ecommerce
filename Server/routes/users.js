@@ -1,7 +1,10 @@
-import express from "express";
-import { getUsers } from "../controllers/users.js";
+import express from 'express';
+import User from "../models/user.js";
+
 const router = express.Router();
 
-router.get("/", getUsers);
+router.get('/users', (req, res) =>{
+    res.send("galing sa users");
+})
 
 export default router;

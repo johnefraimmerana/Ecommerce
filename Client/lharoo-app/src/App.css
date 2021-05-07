@@ -9,7 +9,7 @@ p{
     font-family: 'Lexend', sans-serif;
     font-weight: bold;
 }
-/*
+
 .App{
     background-image: url(./images/background-vectorl.svg);
     position: relative;
@@ -18,7 +18,7 @@ p{
     background-size: cover;
     background-position: center;
 }
-*/
+
 footer{
     text-align:center;
     position: relative;
@@ -29,6 +29,5 @@ body{
     overflow-x:hidden;
 }
 .home-item{
-    align-items: center;
     margin-top: 250px;
 }

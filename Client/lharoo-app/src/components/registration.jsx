@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useState } from 'react';
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,12 +36,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp() 
+{
   const classes = useStyles();
+  //sign up state
+  const [register, setRegister] = useState({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+  });
+  //set the value of the sign up form
+  const handleChange = e => {
+    setRegister({...register, [e.target.name]: e.target.value});
+  };
+  //submit button register new user
+  const handleSubmit = e => {
+    
+     axios.post('http://localhost:5000/createUser', {
+      firstName: register.firstName,
+      lastName: register.lastName,
+      emailAddress: register.email,
+      password: register.password,
+    })
+    .then(function(res){
+      console.log(res);
+    })
+  };
+  
 
-  return (
+return(
     <>
-    <Container component="main" maxWidth="xs" style={{ height: 'auto',borderRadius: '20px' }}>
+    <Container component="main" maxWidth="xs" style={{backgroundColor: '#fdf3f4', height: 'auto',borderRadius: '20px' }}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -48,10 +76,12 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleSubmit} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
+                onChange={handleChange}
+                value={register.firstName}
                 autoComplete="fname"
                 name="firstName"
                 variant="outlined"
@@ -59,11 +89,12 @@ export default function SignUp() {
                 fullWidth
                 id="firstName"
                 label="First Name"
-                autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+              onChange={handleChange}
+              value={register.lName}
                 variant="outlined"
                 required
                 fullWidth
@@ -75,6 +106,8 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onChange={handleChange}
+                value={register.email}
                 variant="outlined"
                 required
                 fullWidth
@@ -86,6 +119,8 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onChange={handleChange}
+                value={register.password}
                 variant="outlined"
                 required
                 fullWidth
@@ -97,10 +132,6 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="All the information given will be private and not shared to any third-party."
-              />
             </Grid>
           </Grid>
           <Button
@@ -122,6 +153,4 @@ export default function SignUp() {
         </form>
       </div>
     </Container>
-    </>
-  );
-}
+    </>)}

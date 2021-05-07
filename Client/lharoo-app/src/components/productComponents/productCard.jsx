@@ -1,10 +1,17 @@
 import React from "react";
-import { Card, CardContent, Typography, CardMedia, IconButton, Grid } from "@material-ui/core";
+import { Card, CardContent, Typography, CardMedia, Box, CardActions } from "@material-ui/core";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 
-const makeStyles = {
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+    marginRight: '100',
+    fontSize: 10,
+  },
   root: {
-    maxWidth: 200,
+    maxWidth: "100px",
   },
   title: {
     fontSize: 14,
@@ -12,15 +19,15 @@ const makeStyles = {
   media : {
     height: '100px',
     width: '100px',
-  }
-};
+  },
+}));
 
 function ProductCard() {
-  const classes = makeStyles;
-  const bull = <span className={classes.bullet}>•</span>;
+  const classes = useStyles;
 
   return (
     <>
+      <Box m={1}>
       <Card className={classes.root}>
         <CardContent>
           <Typography
@@ -30,21 +37,25 @@ function ProductCard() {
           >
             game title
           </Typography>
-          <CardMedia
-            title="product"
-          >
-            <img src="https://picsum.photos/200"></img>
+
+          <CardMedia className={classes.media}>
+            <img src="https://picsum.photos/200" alt ="products"></img>
           </CardMedia>
         </CardContent>
-        <Grid container>
-          <Grid item>
-          <IconButton aria-label="add-cart">
-          <AddShoppingCartIcon color="secondary"></AddShoppingCartIcon>
-        </IconButton>
-        <Typography text="secondary">₱500</Typography>
-          </Grid>
-        </Grid>
+        <CardActions spacing={4}>
+        <Button
+        size="small"
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+        startIcon={<AddShoppingCartIcon />}
+      >
+        Add
+      </Button>
+          <Typography text="secondary">₱500</Typography>
+        </CardActions>
       </Card>
+      </Box>
     </>
   );
 }
