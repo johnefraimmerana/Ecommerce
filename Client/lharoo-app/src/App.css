@@ -5,29 +5,28 @@ h4,
 h5,
 h6,
 body,
-p{
-    font-family: 'Lexend', sans-serif;
-    font-weight: bold;
+p {
+  font-family: "Lexend", sans-serif;
+  font-weight: bold;
 }
 
-.App{
-    background-image: url(./images/background-vectorl.svg);
-    position: relative;
-    min-width: 100%;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
+.App {
+  background-image: url(./images/background-vectorl.svg);
+  position: relative;
+  min-width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
 }
 
-footer{
-    text-align:center;
-    position: relative;
-    margin-top: 100px;
-
+footer {
+  text-align: center;
+  position: relative;
+  margin-top: 100px;
 }
-body{
-    overflow-x:hidden;
+body {
+  overflow-x: hidden;
 }
-.home-item{
-    margin-top: 250px;
+.home-item {
+  margin-top: 250px;
 }

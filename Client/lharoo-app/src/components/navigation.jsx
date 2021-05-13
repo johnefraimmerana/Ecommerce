@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "../images/brand-vector.svg";
 import { Link } from "react-router-dom";
 import Login from "../login/loginModal";
-import { IconButton,  Button}  from "@material-ui/core";
+import { IconButton, Button } from "@material-ui/core";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 
 //variables of classes
@@ -19,9 +19,15 @@ function Navigation() {
   function openModal() {
     setIsOpen(true);
   }
-  function closeModal() {
-    setIsOpen(false);
+  function closeModal(e) {
+    if (e.keys === 27) {
+      setIsOpen(false);
+    }
   }
+  useEffect(() => {
+    window.addEventListener("keypress", closeModal);
+  }, [openLogin]);
+
   return (
     <div className="navigation">
       <div>
@@ -55,9 +61,9 @@ function Navigation() {
               </Link>
             </li>
             <li>
-                <IconButton>
-                  <ShoppingCartOutlinedIcon color="secondary" />
-                </IconButton>
+              <IconButton>
+                <ShoppingCartOutlinedIcon color="secondary" />
+              </IconButton>
             </li>
           </ul>
           <Button variant="contained" size="small" onClick={openModal}>

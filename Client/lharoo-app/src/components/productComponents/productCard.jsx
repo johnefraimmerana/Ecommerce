@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 14,
+    marginLeft: '100px',
   },
   media : {
     height: '100px',
@@ -30,18 +31,18 @@ function ProductCard() {
       <Box m={1}>
       <Card className={classes.root}>
         <CardContent>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            game title
-          </Typography>
-
           <CardMedia className={classes.media}>
             <img src="https://picsum.photos/200" alt ="products"></img>
           </CardMedia>
         </CardContent>
+        <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
+            align='center'
+          >
+            game title
+          </Typography>
         <CardActions spacing={4}>
         <Button
         size="small"
@@ -52,7 +53,7 @@ function ProductCard() {
       >
         Add
       </Button>
-          <Typography text="secondary">₱500</Typography>
+          <Typography align='right' text="secondary">₱500</Typography>
         </CardActions>
       </Card>
       </Box>

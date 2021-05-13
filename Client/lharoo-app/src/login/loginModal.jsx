@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalDialog from 'react-bootstrap/ModalDialog';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -12,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import axios from 'axios';
 
 const loginStyle = makeStyles((theme) => ({
   paper: {
@@ -54,26 +53,59 @@ const overlay_styles={
     backgroundColor:'rgb(0,0,0,.7)',
     zIndex:1000
 }
+
 function Login(props)
 {
-    if(!props.isOpen) return null;
+  //login state
+  const [login, setLogin] = useState({
+    email: "",
+    password: "", 
+  });
 
+  //set new state of the current value of text field
+const handleChange = e =>{
+  setLogin({...login, [e.target.name]: e.target.value});
+}
+
+//handle sign in form
+const  handleSubmit= async (e)=>{
+
+  if(login.email === '' || login.password === ''){
+    alert('Fill up the field!')
+  }
+  else{
+    axios.post('http://localhost:5000/login', {
+    userName : login.email,
+    password : login.password,
+  })
+  .then(function(result){
+    alert(result.data);
+  })
+  }
+  
+  e.preventDefault();
+}
+    if(!props.isOpen) return null;
+    const style = loginStyle;
     return(<>
     <div style={overlay_styles}/>
     <div style={modal_styles}>
     <ModalDialog>
   <ModalBody>
-  <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={loginStyle.paper}>
-        <Avatar className={loginStyle.avatar}>
+  
+      <div className={style.paper}>
+        <Grid container direction='column' justify='center' alignItems='center'>
+        <Avatar className={style.avatar}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={loginStyle.form} noValidate>
+        </Grid>
+        <form onSubmit={handleSubmit} className={style.form} noValidate>
           <TextField
+          onChange={handleChange}
+          value={login.email}
             variant="outlined"
             margin="normal"
             required
@@ -85,6 +117,8 @@ function Login(props)
             autoFocus
           />
           <TextField
+            onChange={handleChange}
+            value={login.password}
             variant="outlined"
             margin="normal"
             required
@@ -115,14 +149,14 @@ function Login(props)
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-    </Container>
+  
   </ModalBody>
 </ModalDialog>
 </div>

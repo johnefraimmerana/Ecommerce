@@ -10,7 +10,7 @@ function Home() {
       <Navigation />
       <div>
       <Grid container justify="space-evenly"  direction="row" spacing={10}>  
-        <Grid item  justify="center" alignItems="center" direction="column">
+        <Grid item>
         <div className="home-item">
           <h1 style={{color:"white"}}>Lharo</h1>
           <p style={{color:"white"}}>We offer games that suit you!</p>
