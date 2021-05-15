@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -49,6 +48,10 @@ export default function SignUp() {
   const notify = (statusData) => {
     if (statusData === "Registered!") {
       toast.success(statusData);
+    } else if (
+      statusData === "Email already exist. Use another email Address."
+    ) {
+      toast.warning(statusData);
     } else {
       for (var i = 0; i < statusData.length; i++) {
         var result = statusData[i].msg;
@@ -68,7 +71,10 @@ export default function SignUp() {
           password: register.password,
         })
         .then((res) => {
-          if (res.data === "Registered!") {
+          if (
+            res.data === "Registered!" ||
+            res.data === "Email already exist. Use another email Address."
+          ) {
             notify(res.data);
           } else {
             notify(res.data.errors);
@@ -154,23 +160,16 @@ export default function SignUp() {
               <Grid item xs={12}></Grid>
             </Grid>
             <Button
+              color="secondary"
               onClick={notify}
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
               className={classes.submit}
             >
               Sign Up
             </Button>
             <ToastContainer />
-            <Grid container justify="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
           </form>
         </div>
       </Container>

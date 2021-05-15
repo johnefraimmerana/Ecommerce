@@ -11,8 +11,8 @@ p {
 }
 
 .App {
-  background-image: url(./images/background-vectorl.svg);
-  position: relative;
+  background-image: url(./images/background-vector1.svg);
+  position: fixed;
   min-width: 100%;
   min-height: 100vh;
   background-size: cover;

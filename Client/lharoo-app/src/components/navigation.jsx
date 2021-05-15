@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "../images/brand-vector.svg";
 import { Link } from "react-router-dom";
-import Login from "../login/loginModal";
 import { IconButton, Button } from "@material-ui/core";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 
@@ -14,20 +13,6 @@ const homeClass = "nav-link text-light ml-5";
 const imgClass = "d-inline-block align-center";
 
 function Navigation() {
-  const [openLogin, setIsOpen] = useState(false);
-
-  function openModal() {
-    setIsOpen(true);
-  }
-  function closeModal(e) {
-    if (e.keys === 27) {
-      setIsOpen(false);
-    }
-  }
-  useEffect(() => {
-    window.addEventListener("keypress", closeModal);
-  }, [openLogin]);
-
   return (
     <div className="navigation">
       <div>
@@ -61,20 +46,18 @@ function Navigation() {
               </Link>
             </li>
             <li>
-              <IconButton>
-                <ShoppingCartOutlinedIcon color="secondary" />
-              </IconButton>
+              <Link to="./checkout">
+                <IconButton>
+                  <ShoppingCartOutlinedIcon color="secondary" />
+                </IconButton>
+              </Link>
             </li>
           </ul>
-          <Button variant="contained" size="small" onClick={openModal}>
-            Login
-          </Button>
-          <Login
-            isOpen={openLogin}
-            close={closeModal}
-            autoFocus={true}
-            closeButton={true}
-          />
+          <Link to="./sign-in" className="nav-link">
+            <Button color="secondary" variant="contained" size="small">
+              sign in
+            </Button>
+          </Link>
         </nav>
       </div>
     </div>

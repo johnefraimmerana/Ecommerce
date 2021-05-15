@@ -5,6 +5,9 @@ import Product from "../src/components/product";
 import Home from "./components/home";
 import About from "./components/about";
 import NotFound from "./components/not-found";
+import CheckOut from "./components/checkout/checkout";
+import Login from "./components/login/login";
+
 function App() {
   return (
     <div className="App">
@@ -12,8 +15,10 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/product" component={Product} />
         <Route path="/about" component={About} />
+        <Route path="/checkout" component={CheckOut} />
+        <Route path="/sign-in" component={Login} />
         <Redirect from="/" exact to="/home" />
-        <Redirect to="/not-found" component={<NotFound />} />
+        <Redirect to="/not-found" component={NotFound} />
       </Switch>
     </div>
   );

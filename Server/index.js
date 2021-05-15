@@ -66,7 +66,7 @@ app.post(
       if (err) {
         console.log(err);
       }
-      if (user === req.body.emailAddress)
+      if (Boolean(user))
         res.send("Email already exist. Use another email Address.");
     });
     //hashing and salting password
@@ -89,21 +89,37 @@ app.post(
 );
 
 //login user
-app.post("/login", (req, res) => {
-  const userName = req.body.userName;
-  const password = req.body.password;
-  User.findOne({ emailAddress: userName }, function (err, foundUser) {
-    if (err) {
-      console.log(err);
-    } else {
-      if (foundUser) {
-        if (foundUser.password === password) {
-          res.send("login");
+app.post(
+  "/login",
+  [body("userName").notEmpty(), body("password").notEmpty()],
+  (req, res) => {
+    //returning error to client
+    const errors = validationResult(req);
+    console.log(errors);
+    if (!errors.isEmpty()) {
+      return res.send({ errors: errors.array() });
+    }
+    const userName = req.body.userName;
+    const password = req.body.password;
+    User.findOne({ emailAddress: userName }, function (err, foundUser) {
+      if (err) {
+        console.log(err);
+      } else {
+        if (foundUser) {
+          //comparing input password and password from the database
+          bcrypt.compare(password, foundUser.password, function (err, result) {
+            if (err) {
+              console.log(err);
+            }
+            if (result) {
+              res.send("login successfully.");
+            }
+          });
         }
       }
-    }
-  });
-});
+    });
+  }
+);
 
 app.listen(PORT, () => {
   console.log(`Server is running on: http://localhost${PORT}`);
