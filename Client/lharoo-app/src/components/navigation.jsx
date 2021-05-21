@@ -1,9 +1,13 @@
 import React from "react";
 import Image from "../images/brand-vector.svg";
 import { Link } from "react-router-dom";
-import { IconButton, Button } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-
+import AuthenticationButton from "./profile_component/authenticatedButton";
+import ProfileLink from "./profile_component/profileNavLink";
+import ProfileAvatar from "./profile_component/avatar";
+import Login from "./loginButton";
+import { useAuth0 } from "@auth0/auth0-react";
 //variables of classes
 const navClasses = "navbar bg-dark";
 const ulClasses = "nav navbar";
@@ -13,6 +17,7 @@ const homeClass = "nav-link text-light ml-5";
 const imgClass = "d-inline-block align-center";
 
 function Navigation() {
+  const { isAuthenticated } = useAuth0();
   return (
     <div className="navigation">
       <div>
@@ -46,6 +51,9 @@ function Navigation() {
               </Link>
             </li>
             <li>
+              <ProfileLink />
+            </li>
+            <li>
               <Link to="./checkout">
                 <IconButton>
                   <ShoppingCartOutlinedIcon color="secondary" />
@@ -53,11 +61,8 @@ function Navigation() {
               </Link>
             </li>
           </ul>
-          <Link to="./sign-in" className="nav-link">
-            <Button color="secondary" variant="contained" size="small">
-              sign in
-            </Button>
-          </Link>
+          {!isAuthenticated ? <Login /> : null}
+          <ProfileAvatar />
         </nav>
       </div>
     </div>

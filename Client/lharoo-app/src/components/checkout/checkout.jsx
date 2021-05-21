@@ -1,13 +1,14 @@
 import React from "react";
 import Navigation from "../navigation";
-
+import Grid from "@material-ui/core/Grid";
 function CheckOut() {
   return (
     <>
-      <Navigation />
-      <h1 style={{ color: "white", marginLeft: 600, marginTop: 200 }}>
-        Cart is empty.
-      </h1>
+      <Grid container xs={12} justify="center">
+        <div>
+          <h1 style={{ color: "white" }}>Cart is empty.</h1>
+        </div>
+      </Grid>
     </>
   );
 }

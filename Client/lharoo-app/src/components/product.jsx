@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
 function Product() {
   return (
     <>
-      <Navigation />
       <Grid container justify="center">
         <ProductNavBar />
       </Grid>

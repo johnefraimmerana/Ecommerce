@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 function About() {
   return (
     <>
-      <Navigation />
       <Grid container direction="row">
         <Grid container item xs={6}>
           <div>
