@@ -18,6 +18,7 @@ function Home() {
             <img
               style={{ width: "700px", marginTop: "100px" }}
               src={Gaming}
+              alt="photos"
             ></img>
           </Grid>
         </Grid>

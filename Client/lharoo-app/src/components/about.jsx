@@ -1,5 +1,4 @@
 import React from "react";
-import Navigation from "./navigation";
 import Image from "../images/about.svg";
 import Grid from "@material-ui/core/Grid";
 

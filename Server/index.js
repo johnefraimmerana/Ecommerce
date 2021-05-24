@@ -1,10 +1,9 @@
-import express, { request } from "express";
+import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import Client from "./services/createUser.js";
-import Sign from "./services/login.js";
+import Product from "./models/product.js";
 dotenv.config();
 
 const app = express();
@@ -26,16 +25,24 @@ mongoose
   })
   .catch((error) => console.log(error.message));
 
-//create user with validation
-app.post("/createUser", Client.UserValidator(), (req, res) => {
-  Client.CreateUser(req, res);
+app.get("/products", (req, res) => {
+  Product.find()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
-//login user
-app.post("/login", Sign.LoginValidator(), (req, res) => {
-  Sign.LoginUser(req, res);
+app.get("./", (req, res) => {
+  res.send("Hello to lharo and welcome");
 });
-
+app.post("/createProducts", (req, res) => {
+  console.log(req.body);
+  const newProduct = new Product(req.body);
+  newProduct.save();
+});
 app.listen(PORT, () => {
   console.log(`Server is running on: http://localhost${PORT}`);
 });

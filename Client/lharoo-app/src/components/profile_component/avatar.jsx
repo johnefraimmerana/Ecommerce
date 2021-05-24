@@ -16,7 +16,7 @@ function ProfileAvatar() {
           </Grid>
           <Grid>
             <Dropdown size="lg">
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
+              <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                 {user.nickname}
               </Dropdown.Toggle>
 

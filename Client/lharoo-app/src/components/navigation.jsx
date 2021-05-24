@@ -1,9 +1,8 @@
 import React from "react";
 import Image from "../images/brand-vector.svg";
 import { Link } from "react-router-dom";
-import { IconButton } from "@material-ui/core";
+import { Badge } from "@material-ui/core";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import AuthenticationButton from "./profile_component/authenticatedButton";
 import ProfileLink from "./profile_component/profileNavLink";
 import ProfileAvatar from "./profile_component/avatar";
 import Login from "./loginButton";
@@ -55,9 +54,9 @@ function Navigation() {
             </li>
             <li>
               <Link to="./checkout">
-                <IconButton>
+                <Badge badgeContent={0} color="secondary">
                   <ShoppingCartOutlinedIcon color="secondary" />
-                </IconButton>
+                </Badge>
               </Link>
             </li>
           </ul>

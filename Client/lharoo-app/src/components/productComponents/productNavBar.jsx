@@ -25,23 +25,7 @@ export default function ProductNavBar() {
                   Store<span className="sr-only">(current)</span>
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link text-light" href="/">
-                  Merchandise
-                </a>
-              </li>
               <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle text-light"
-                  href="/"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Genre
-                </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a className="dropdown-item" href="/">
                     Action

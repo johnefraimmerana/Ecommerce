@@ -1,13 +1,20 @@
 import React from "react";
-import { Card, CardContent, Typography, CardMedia, Box, CardActions } from "@material-ui/core";
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import {
+  Card,
+  CardContent,
+  Typography,
+  CardMedia,
+  Box,
+  CardActions,
+} from "@material-ui/core";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
-    marginRight: '100',
+    marginRight: "100",
     fontSize: 10,
   },
   root: {
@@ -15,47 +22,58 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 14,
-    marginLeft: '100px',
+    marginLeft: "100px",
   },
-  media : {
-    height: '100px',
-    width: '100px',
+  media: {
+    height: "100px",
+    width: "100px",
   },
 }));
 
-function ProductCard() {
+function ProductCard(props) {
   const classes = useStyles;
+
+  const handleClick = () => {
+    props.addCart(props);
+  };
 
   return (
     <>
       <Box m={1}>
-      <Card className={classes.root}>
-        <CardContent>
-          <CardMedia className={classes.media}>
-            <img src="https://picsum.photos/200" alt ="products"></img>
-          </CardMedia>
-        </CardContent>
-        <Typography
+        <Card className={classes.root}>
+          <CardContent>
+            <CardMedia className={classes.media}>
+              <img
+                src={props.image}
+                alt="product"
+                style={{ height: "150px", width: "150px" }}
+              ></img>
+            </CardMedia>
+          </CardContent>
+          <Typography
             className={classes.title}
             color="textSecondary"
             gutterBottom
-            align='center'
+            align="center"
           >
-            game title
+            {props.name}
           </Typography>
-        <CardActions spacing={4}>
-        <Button
-        size="small"
-        variant="contained"
-        color="secondary"
-        className={classes.button}
-        startIcon={<AddShoppingCartIcon />}
-      >
-        Add
-      </Button>
-          <Typography align='right' text="secondary">₱500</Typography>
-        </CardActions>
-      </Card>
+          <CardActions spacing={4}>
+            <Button
+              onClick={handleClick}
+              size="small"
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              startIcon={<AddShoppingCartIcon />}
+            >
+              Add
+            </Button>
+            <Typography align="right" text="secondary">
+              ₱{props.price}
+            </Typography>
+          </CardActions>
+        </Card>
       </Box>
     </>
   );
